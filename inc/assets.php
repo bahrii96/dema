@@ -6,21 +6,38 @@ function detect_assets()
 	wp_deregister_script('jquery');
 
 	if (!is_admin()) {
-		/* Connect styles for Any Templates If needed */
 
-		wp_enqueue_style('ukraine', get_stylesheet_directory_uri()
-			. '/assets/fonts/ukraine/stylesheet.css', array(), null);
+		/* Connect styles for Any Templates If needed */
 
 		if (is_page_template('views/page-home.php')) {
 			wp_enqueue_style('page-home', get_stylesheet_directory_uri()
 				. '/assets/css/pages/page-home.css', array(), null);
+		}
+		if (is_page_template('views/about-page.php')) {
+			wp_enqueue_style('page-about', get_stylesheet_directory_uri()
+				. '/assets/css/pages/about-page.css', array(), null);
+		}
+		if (is_page_template('views/partners-page.php')) {
+			wp_enqueue_style('partners', get_stylesheet_directory_uri()
+				. '/assets/css/pages/partners-page.css', array(), null);
+		}
+		if (is_page_template('views/projects.php')) {
+			wp_enqueue_style('projects', get_stylesheet_directory_uri()
+				. '/assets/css/pages/projects.css', array(), null);
+		}
+		if (is_page_template('views/contact-page.php')) {
+			wp_enqueue_style('contact-page', get_stylesheet_directory_uri()
+				. '/assets/css/pages/contact-page.css', array(), null);
 		}
 		if (is_page_template('views/success.php')) {
 			wp_enqueue_style('success', get_stylesheet_directory_uri()
 				. '/assets/css/pages/success.css', array(), null);
 		}
 
-
+		if (is_singular('projects')) {
+			wp_enqueue_style('service-style', get_stylesheet_directory_uri()
+				. '/assets/css/pages/single-projects.css', array(), null);
+		}
 
 		if ('post' == get_post_type()) {
 			wp_enqueue_style('category-blog', get_stylesheet_directory_uri() . '/assets/css/pages/category-blog.css', array(), '1.0');

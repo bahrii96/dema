@@ -1,35 +1,64 @@
-.btn-bl {
+.btn-border,
+.btn,
+.btn-border.wpcf7-submit {
     display: inline-flex;
-    background: rgb(9, 7, 0);
-    color: rgb(217, 217, 217);
-    font-family: 'e-Ukraine Head';
-    font-size: clamp(rem(12), vw(16), rem(16));
+    -webkit-text-fill-color: rgb(33, 33, 33);
+
+    background: linear-gradient(141.87deg, rgb(204, 149, 106) 18.536%, rgb(249, 231, 216) 36.054%, rgb(248, 204, 165) 46.487%, rgb(204, 149, 106) 58.492%, rgb(104, 67, 44) 81.209%);
+    font-family: 'Geologica';
+    font-size: rem(16);
     font-weight: 400;
     text-transform: uppercase;
-    padding: rem(16) rem(48);
+    padding: rem(12) rem(28);
     transition: all 0.3s;
-    border: 2px solid rgb(9, 7, 0);
-    border-radius: 0;
+    position: relative;
+    border-radius: rem(60);
+    width: auto;
+    border: none;
+
+    &::after {
+        content: '';
+        position: absolute;
+        background-image: url(' ./../images/arrow-br-hv.png');
+        width: 100%;
+        height: 100%;
+        width: 48px;
+        height: 48px;
+        background-size: cover;
+        transition: all 0.3s;
+        right: rem(-52);
+        top: 0;
+    }
     &:hover {
-        color: rgb(9, 7, 0);
-        background: transparent;
+        filter: brightness(0.8);
     }
 }
-.btn {
-    display: inline-flex;
-    background: rgb(196, 156, 77);
-    color: rgb(217, 217, 217);
-    font-family: 'e-Ukraine Head';
-    font-size: clamp(rem(12), vw(16), rem(16));
-    font-weight: 400;
-    text-transform: uppercase;
-    padding: rem(16) rem(48);
-    transition: all 0.3s;
-    border: 2px solid rgb(196, 156, 77);
-    border-radius: 0;
+
+.form-submit p {
+    position: relative;
+    display: inline-block;
+		cursor: pointer;
+    &::after {
+        content: '';
+        position: absolute;
+        background-image: url(' ./../images/arrow-br-hv.png');
+        width: 100%;
+        height: 100%;
+        width: 48px;
+        height: 48px;
+        background-size: cover;
+        transition: all 0.3s;
+        right: rem(-52);
+        top: 0;
+    }
     &:hover {
-        color: rgb(196, 156, 77);
-        background: transparent;
+        .btn-border {
+            filter: brightness(0.8);
+        }
+
+        &::after {
+            filter: brightness(0.8);
+        }
     }
 }
 

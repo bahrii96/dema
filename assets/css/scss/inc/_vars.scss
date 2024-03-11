@@ -21,7 +21,6 @@ $padding-middle: 24px;
 
 // <Mixins-media-queries>=========================================================================================================
 
-
 @mixin desktop-mdll {
     @media (max-width: 1600) {
         @content;
@@ -64,7 +63,7 @@ $padding-middle: 24px;
 }
 // Mixins
 
-$maxWidth: 1440;
+$maxWidth: 1920;
 $mobWidth: 320;
 
 @function vw($value) {
@@ -125,3 +124,4 @@ $p_h2: clamp(rem(20), vw(26), rem(26));
 $p_h3: clamp(rem(18), vw(24), rem(24));
 $p_h4: clamp(rem(16), vw(22), rem(22));
 $p_h5: clamp(rem(16), vw(18), rem(18));
+

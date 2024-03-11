@@ -1,0 +1,140 @@
+@import '../inc/vars';
+
+.hero-block {
+    position: relative;
+    padding: clamp(rem(155), vw(288), rem(288)) 0 clamp(rem(90), vw(190), rem(190));
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+
+    h1 {
+        font-family: 'Geologica';
+        font-size: clamp(rem(32), vw(60), rem(60));
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: clamp(rem(8), vw(16), rem(16));
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        color: #d7ccc8;
+        span {
+            background: linear-gradient(141.87deg, rgb(204, 149, 106), rgb(249, 231, 216), rgb(248, 204, 165), rgb(204, 149, 106), rgb(104, 67, 44));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    }
+    .desc {
+        color: rgb(215, 204, 200);
+    }
+}
+
+.partner-block {
+    padding: clamp(rem(40), vw(80), rem(80)) 0;
+    &__tabs {
+        list-style: none;
+        display: flex;
+        gap: rem(40);
+        margin-bottom: clamp(rem(16), vw(40), rem(40));
+        @include tablet-sm {
+            flex-direction: column;
+            gap: rem(8);
+        }
+        li {
+            display: inline-flex;
+
+            font-family: 'Geologica';
+            font-size: rem(16);
+            font-weight: 400;
+            text-transform: uppercase;
+            padding: rem(12) rem(28);
+            transition: all 0.3s;
+            border: 2px solid rgb(62, 39, 35);
+            border-radius: rem(60);
+            position: relative;
+            transition: all 0.3s;
+            @include tablet-smm {
+                width: fit-content;
+            }
+            &:hover {
+                opacity: 0.7;
+            }
+            a {
+                color: rgb(62, 39, 35);
+            }
+            &.ui-tabs-active {
+                color: rgb(215, 204, 200);
+                background: rgb(62, 39, 35);
+                a {
+                    color: rgb(215, 204, 200);
+                }
+            }
+        }
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: rem(40);
+    }
+    &__group {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: rem(16) 7%;
+        @include tablet-smm {
+            grid-template-columns: 1fr;
+        }
+        h2 {
+            margin-bottom: rem(24);
+        }
+        .desc {
+            font-size: clamp(rem(16), vw(24), rem(24));
+            font-weight: 200;
+        }
+    }
+}
+
+.banner-block {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    &__box {
+        display: grid;
+        grid-template-columns: 1.4fr 0.6fr;
+        @include tablet-smm {
+            grid-template-columns: 1fr;
+        }
+    }
+    &__left {
+        padding: clamp(rem(40), vw(108), rem(108)) 0;
+        max-width: rem(631);
+        margin: auto;
+        @include tablet-smm {
+            max-width: 100%;
+            margin: 0 rem(15);
+        }
+        h2 {
+            text-transform: uppercase;
+            margin-bottom: clamp(rem(16), vw(40), rem(40));
+            color: #d7ccc8;
+            span {
+                background: linear-gradient(141.87deg, rgb(204, 149, 106), rgb(249, 231, 216), rgb(248, 204, 165), rgb(204, 149, 106), rgb(104, 67, 44));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+        }
+    }
+    &__box-link {
+        text-align: right;
+        margin-right: rem(51);
+    }
+    &__img {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        @include tablet-smm {
+            height: rem(220);
+        }
+    }
+}
+

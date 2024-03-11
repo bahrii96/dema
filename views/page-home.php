@@ -4,43 +4,43 @@ $main_template = get_field('main_template');
 
 if ($main_template) {
 	$hero_group = $main_template['hero_group'];
-	$about_group = $main_template['about_group'];
+	$about_me_group = $main_template['about_me_group'];
+	$our_works_group = $main_template['our_works_group'];
 	$benefits_group = $main_template['benefits_group'];
-	$gallery_group = $main_template['gallery_group'];
-	$products_group = $main_template['products_group'];
-	$special_offer_group = $main_template['special_offer_group'];
-	$question_group = $main_template['question_group'];
-	$testimonials_group = $main_template['testimonials_group'];
+	$news_group = $main_template['news_group'];
 	$contact_group = $main_template['contact_group'];
 };
 ?>
 <main class="home-page">
 	<?php if ($hero_group) :
 		$overlay = $hero_group['overlay'];
-		$overlay_mobile = $hero_group['overlay_mobile'];
 		$title = $hero_group['title'];
+		$image = $hero_group['image'];
+		$second_image = $hero_group['second_image'];
 		$button = $hero_group['button'];
-		$caption = $hero_group['caption'];
 	?>
-		<section class="hero-block">
-			<?php if ($overlay) : ?>
-				<div class="hero-block__overlay" style="background-image: url(<?php echo $overlay['url'] ?>);"></div>
-			<?php endif; ?>
-			<?php if ($overlay_mobile) : ?>
-				<div class="hero-block__overlay-mob" style="background-image: url(<?php echo $overlay_mobile['url'] ?>);">
-				</div>
-			<?php endif; ?>
+		<section class="hero-block" style="background-image: url(<?php echo $overlay['url'] ?>);">
 			<div class="container">
-				<div class="hero-block__box" data-aos="fade-right">
+				<div class="hero-block__box">
 					<?php if ($title) : ?>
-						<h1 data-aos="fade-right" data-aos-delay="500"><?php echo $title ?></h1>
+						<h1 data-aos="fade-right">
+							<?php echo $title ?> </h1>
 					<?php endif; ?>
-					<?php if ($caption) : ?>
-						<div class="hero-block__desc" data-aos="fade-right" data-aos-delay="500"><?php echo $caption ?></div>
-					<?php endif; ?>
+					<div class=" hero-block__img">
+						<?php if ($image) : ?>
+							<div class="hero-block__img-first" data-aos="fade-right" data-aos-delay="500">
+								<?php echo wp_get_attachment_image($image, 'full'); ?>
+							</div>
+						<?php endif; ?>
+						<?php if ($second_image) : ?>
+							<div class="hero-block__img-second" data-aos="fade-right" data-aos-delay="400">
+								<?php echo wp_get_attachment_image($second_image, 'full'); ?>
+							</div>
+						<?php endif; ?>
+					</div>
 					<?php if ($button) : ?>
-						<div class="hero-block__btn" data-aos="fade-up" data-aos-delay="600">
-							<?php echo initLinkHref($button, 'btn', true) ?>
+						<div class="hero-block__btn">
+							<?php echo initLinkHref($button, 'btn-border') ?>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -48,25 +48,41 @@ if ($main_template) {
 		</section>
 	<?php endif; ?>
 
-	<?php if ($about_group) :
-		$block_id = $about_group['block_id'];
-		$title = $about_group['title'];
-		$image = $about_group['image'];
-		$description = $about_group['description'];
+	<?php if ($about_me_group) :
+		$overlay = $about_me_group['overlay'];
+		$image = $about_me_group['image'];
+		$title = $about_me_group['title'];
+		$description = $about_me_group['description'];
+		$button = $about_me_group['button'];
 	?>
-		<section class="about-block" id="<?php echo $block_id  ?>">
+		<section class="about-block" style="background-image: url(<?php echo $overlay['url'] ?>);">
 			<div class="container">
-				<div class="about-block__img" >
-					<?php if ($image) : ?>
-						<?php echo wp_get_attachment_image($image, 'full'); ?>
-					<?php endif; ?>
-				</div>
-				<div class="about-block__group">
+				<div class="about-block__left">
 					<?php if ($title) : ?>
-						<h2><?php echo $title ?></h2>
+						<h2 class="about-block__title-mob"><?php echo $title ?></h2>
+					<?php endif; ?>
+					<?php if ($image) : ?>
+						<div class="about-block__img">
+							<?php echo wp_get_attachment_image($image, 'full'); ?>
+						</div>
+					<?php endif; ?>
+					<?php if ($button) : ?>
+						<div class="about-block__btn">
+							<?php echo initLinkHref($button, 'btn', true) ?>
+						</div>
 					<?php endif; ?>
 					<?php if ($description) : ?>
-						<div class="about-block__description desc">
+						<div class="about-block__desc-mob desc">
+							<?php echo $description ?>
+						</div>
+					<?php endif; ?>
+				</div>
+				<div class="about-block__right">
+					<?php if ($title) : ?>
+						<h2 data-aos="fade-left"><?php echo $title ?></h2>
+					<?php endif; ?>
+					<?php if ($description) : ?>
+						<div class="about-block__desc desc" data-aos="fade-left">
 							<?php echo $description ?>
 						</div>
 					<?php endif; ?>
@@ -75,176 +91,14 @@ if ($main_template) {
 		</section>
 	<?php endif; ?>
 
-	<?php if ($benefits_group) :
-		$title = $benefits_group['title'];
-		$image = $benefits_group['image'];
-		$list = $benefits_group['list'];
-		$block_id = $benefits_group['block_id'];
+	<?php if ($our_works_group) :
+		$title = $our_works_group['title'];
+		$list = $our_works_group['list'];
+		$button = $hero_group['button'];
 	?>
-		<section class="benefits-block" id="<?php echo $block_id  ?>">
+		<section class="works-block">
 			<div class="container">
-				<div class="benefits-block__left">
-					<?php if ($title) : ?>
-						<h2>
-							<?php echo $title ?>
-						</h2>
-					<?php endif; ?>
-					<?php if (is_array($list)) : ?>
-						<div class="benefits-block__list">
-							<?php
-							$delay = 400;
-
-							foreach ($list as $item) {
-								$description = $item['description'];
-							?>
-								<div class="benefits-block__item" data-aos="fade-right" data-aos-delay="<?php echo $delay; ?>">
-									<?php if ($description) : ?>
-										<div class="benefits-block__item-desc desc"><?php echo $description ?></div>
-									<?php endif; ?>
-								</div>
-							<?php
-								$delay += 50;
-							} ?>
-						</div>
-					<?php endif; ?>
-				</div>
-				<?php if ($image) : ?>
-					<div class="benefits-block__img">
-						<?php echo wp_get_attachment_image($image, 'full'); ?>
-					</div>
-				<?php endif; ?>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php if ($gallery_group) :
-		$list = $gallery_group['list'];
-		$block_id = $gallery_group['block_id'];
-	?>
-		<section class="gallery-block" id="<?php echo $block_id  ?>">
-			<div class="container">
-				<div class="swiper  gallery-block__swiper">
-					<div class="swiper-wrapper">
-						<?php foreach ($list as $item) {
-							$image = $item['image'];
-						?>
-							<div class="swiper-slide">
-								<div class="grid-image" data-fancybox="gallery" data-src="<?php echo wp_get_attachment_image_src($image, 'full')[0]; ?>">
-									<?php echo wp_get_attachment_image($image, 'full'); ?>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php if ($products_group) :
-		$title = $products_group['title'];
-		$list = $products_group['list'];
-		$block_id = $products_group['block_id'];
-	?>
-		<section class="products-block" id="<?php echo $block_id  ?>">
-			<div class="container">
-				<?php if ($title) : ?>
-					<h2>
-						<?php echo $title ?>
-					</h2>
-				<?php endif; ?>
-
-				<div class="swiper  products-block__swiper mySwiper">
-					<div class="swiper-wrapper">
-						<?php foreach ($list as $item) {
-							$image = $item['image'];
-							$title = $item['title'];
-							$price = $item['price'];
-						?>
-							<div class="swiper-slide">
-								<div class="products-grid-image">
-									<?php echo wp_get_attachment_image($image, 'full'); ?>
-								</div>
-								<h3><?php echo $title ?></h3>
-								<div class="price"><?php echo $price ?></div>
-							</div>
-						<?php } ?>
-					</div>
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php if ($special_offer_group) :
-		$title = $special_offer_group['title'];
-		$image = $special_offer_group['image'];
-		$overlay = $special_offer_group['overlay'];
-		$button = $special_offer_group['button'];
-		$block_id = $special_offer_group['block_id'];
-	?>
-		<section class="price-block" id="<?php echo $block_id ?>" style="background-image: url(<?php echo $overlay['url'] ?>);">
-			<div class="container">
-				<div class="price-block__box">
-					<?php if ($title) : ?>
-						<h2><?php echo $title ?></h2>
-					<?php endif; ?>
-					<?php if ($button) : ?>
-						<div class="price-block__box-link">
-							<?php echo initLinkHref($button, 'btn-bl', true) ?>
-						</div>
-					<?php endif; ?>
-				</div>
-				<?php if ($image) : ?>
-					<div class="price-block__img">
-						<?php echo wp_get_attachment_image($image, 'full'); ?>
-					</div>
-				<?php endif; ?>
-
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php if ($question_group) :
-		$title = $question_group['title'];
-		$list = $question_group['list'];
-		$block_id = $question_group['block_id'];
-	?>
-		<section class="question-block" id="<?php echo $block_id  ?>">
-			<div class="container">
-				<?php if ($title) : ?>
-					<h2 >
-						<?php echo $title ?>
-					</h2>
-				<?php endif; ?>
-				<div class="question-block__group">
-					<div class="question-block__list" id="accordion">
-						<?php foreach ($list as $key => $item) {
-							$title = $item['title'];
-							$description = $item['description'];
-						?>
-							<div class="group question-block__item">
-								<h3>
-									<?php echo $title ?>
-									<div class="btn-arrow"></div>
-								</h3>
-								<div class="group question-block__item-desc description">
-									<p><?php echo $description ?></p>
-								</div>
-							</div>
-						<?php } ?>
-					</div>
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php if ($testimonials_group) :
-		$title = $testimonials_group['title'];
-		$list = $testimonials_group['list'];
-		$block_id = $testimonials_group['block_id'];
-	?>
-		<section class="testimonials-block" id="<?php echo $block_id  ?>">
-			<div class="container">
-				<div class="testimonials-block__top">
+				<div class="works-block__top">
 					<?php if ($title) : ?>
 						<h2>
 							<?php echo $title ?>
@@ -259,63 +113,178 @@ if ($main_template) {
 						</button>
 					</div>
 				</div>
-				<div class="swiper  testimonials-block__swiper">
-					<div class="swiper-wrapper">
-						<?php
-						$count = 0;
-						foreach ($list as $item) {
-							$image = $item['image'];
-							$name = $item['name'];
-							$data = $item['data'];
-							$testimonial = $item['testimonial'];
+			</div>
+			<div class="swiper  works-block__swiper mySwiper">
+				<div class="swiper-wrapper">
+					<?php foreach ($list as $item) {
+						$image = $item['image'];
+						$title = $item['title'];
+						$link = $item['link'];
+					?>
+						<div class="swiper-slide">
+							<a href="<?php echo $link ?>" class="slide-link">
+								<div class="grid-slide-image">
+									<?php echo wp_get_attachment_image($image, 'full'); ?>
+								</div>
+								<h3><?php echo $title ?></h3>
+							</a>
+						</div>
+					<?php } ?>
+				</div>
+			</div>
+			<div class="container">
+				<?php if ($button) : ?>
+					<div class="works-block__btn">
+						<?php echo initLinkHref($button, 'btn') ?>
+					</div>
+				<?php endif; ?>
+			</div>
+		</section>
+	<?php endif; ?>
 
+	<?php if ($benefits_group) :
+		$overlay = $benefits_group['overlay'];
+		$list_first = $benefits_group['list_first'];
+	?>
+		<section class="benefits-block" style="background-image: url(<?php echo $overlay['url'] ?>);">
+			<div class="container">
+				<?php if (is_array($list_first)) : ?>
+					<div class="benefits-block__list counter" id="counter">
+						<?php foreach ($list_first as $item) {
+							$number = $item['number'];
+							$span = $item['span'];
+							$caption = $item['caption'];
 						?>
-							<div class="swiper-slide <?php echo ($count % 2 == 0) ? ' active-block' : ''; ?>">
-								<div class="testimonials-block__avatar"><?php echo wp_get_attachment_image($image, 'full'); ?></div>
-								<div class="testimonials-block__box">
-									<span><?php echo $data ?></span>
-									<h3><?php echo $name ?></h3>
-									<div class="testimonials-block__testimonial desc"><?php echo $testimonial ?></div>
+							<div class="benefits-block__item">
+								<div class="benefits-block__item-box">
+									<?php if ($number) : ?>
+										<div class="benefits-block__number-box">
+											<div class="benefits-block__number counter-value" data-count="<?php echo $number ?>">
+												0
+											</div>
+											<?php if ($span) : ?>
+												<span class="benefits-block__number"><?php echo $span ?></span>
+											<?php endif; ?>
+										</div>
+									<?php endif; ?>
+									<h3><?php echo $caption ?></h3>
 								</div>
 							</div>
 						<?php
-							$count++;
 						} ?>
 					</div>
+				<?php endif; ?>
+			</div>
+		</section>
+	<?php endif; ?>
+
+
+	<?php if ($news_group) :
+		$title = $news_group['title'];
+		$description = $news_group['description'];
+		$button = $news_group['button'];
+		$list = $news_group['list'];
+
+	?>
+		<section class="archive-blog">
+			<div class="container">
+				<div class="archive-blog__top">
+					<?php if ($title) : ?>
+						<h2>
+							<?php echo $title ?>
+						</h2>
+					<?php endif; ?>
+					<div class="archive-blog__inf">
+						<?php if ($description) : ?>
+							<div class="archive-blog__desc desc">
+								<?php echo $description ?>
+							</div>
+						<?php endif; ?>
+						<?php if ($button) : ?>
+							<?php echo initLinkHref($button, 'btn') ?>
+						<?php endif; ?>
+					</div>
+				</div>
+				<div class="archive-blog__wrapper">
+					<?php if ($list) :
+						$delay = 400; ?>
+						<?php foreach ($list as $item) {
+							$image = $item['image'];
+							$data = $item['data'];
+							$title = $item['title'];
+						?>
+							<div class="archive-blog__item" data-aos="fade-left" data-aos-delay="<?php echo $delay; ?>">
+								<div class="archive-blog__item-top">
+									<?php echo wp_get_attachment_image($image, 'full'); ?>
+								</div>
+								<div class="archive-blog__item-info">
+									<div class="archive-blog__item-meta">
+										<div class="date"><?php echo $data; ?></div>
+									</div>
+									<h3>
+										<?php echo $title ?>
+									</h3>
+								</div>
+							</div>
+						<?php
+							$delay += 100;
+						} ?>
+					<?php endif; ?>
 				</div>
 			</div>
 		</section>
 	<?php endif; ?>
 
 	<?php if ($contact_group) :
-		$block_id = $contact_group['block_id'];
+		$form_title = $contact_group['form_title'];
 		$form_id = $contact_group['form_id'];
-		$overlay_contact = $contact_group['overlay_contact'];
-		$title = $contact_group['title'];
-		$description = $contact_group['description'];
+		$overlay = $contact_group['overlay'];
+		$list_office = $contact_group['list_office'];
 	?>
-		<section class="contact-block" id="<?php echo $block_id ?>" style="background-image: url(<?php echo $overlay_contact['url'] ?>);">
-			<div class=" container">
-				<div class="contact-block__box" data-aos="fade-right">
-					<div class="contact-block__box-text">
-						<?php if ($title) : ?>
-							<h2 data-aos="fade-right" data-aos-delay="500">
-								<?php echo $title ?>
-							</h2>
-						<?php endif; ?>
-						<?php if ($description) : ?>
-							<div class="contact-block__desc desc" data-aos="fade-right" data-aos-delay="500">
-								<?php echo $description ?>
-							</div>
-						<?php endif; ?>
-					</div>
-				</div>
-				<?php if ($form_id) : ?>
-					<div class="contact-block__form">
-						<?php echo do_shortcode($form_id); ?>
-					</div>
-				<?php endif; ?>
+		<section class="contact-block">
+			<div class="container">
+				<div class="contact-block__left">
 
+					<?php if ($form_id) : ?>
+						<div class="contact-block__form">
+							<?php if ($form_title) : ?>
+								<h2>
+									<?php echo $form_title ?>
+								</h2>
+							<?php endif; ?>
+							<div class="form-box">
+								<?php echo do_shortcode($form_id); ?>
+							</div>
+						</div>
+					<?php endif; ?>
+				</div>
+				<div class="contact-block__right" style="background-image: url(<?php echo $overlay['url'] ?>);">
+					<?php if (is_array($list_office)) : ?>
+						<div class="contact-block__list">
+							<?php foreach ($list_office as $item) {
+								$title = $item['title'];
+								$list_contact = $item['list_contact'];
+							?>
+								<div class="contact-block__item">
+									<h3><?php echo $title ?></h3>
+									<?php if (is_array($list_contact)) : ?>
+										<div class="contact-block__office">
+											<?php foreach ($list_contact as $item) {
+												$icon = $item['icon'];
+												$link = $item['link'];
+											?>
+												<div class="contact-block__office-item">
+													<?php echo wp_get_attachment_image($icon, 'full'); ?>
+													<?php echo initLinkHref($link,) ?>
+												</div>
+											<?php } ?>
+										</div>
+									<?php endif; ?>
+								</div>
+							<?php } ?>
+						</div>
+					<?php endif; ?>
+				</div>
 			</div>
 		</section>
 	<?php endif; ?>

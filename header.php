@@ -8,11 +8,11 @@
 	?>
 </head>
 <?php
-
-$links = get_field('liks', 'options');
+$link = get_field('link', 'options');
 ?>
 
 <body <?php body_class(); ?>>
+
 	<header class="header">
 		<div class="container">
 			<a href="<?php echo home_url('/'); ?>" class="logo" aria-label="Site Logo">
@@ -36,5 +36,36 @@ $links = get_field('liks', 'options');
 					'walker' => new Custom_Walker_Nav_Menu
 				));
 				?>
+				<div class="languages-menu">
+					<?php
+					$languages = pll_the_languages(array('raw' => 1));
+
+					foreach ($languages as $language) {
+						$class = ($language['current_lang']) ? 'active' : '';
+						echo '<a href="' . $language['url'] . '" class="' . $class . '">' . strtoupper($language['slug']) . '</a>';
+					}
+					?>
+				</div>
+				<div class="menu-btn menu-btn-mob">
+					<?php
+					if ($link) :
+						$link_url = $link['url'];
+						$link_title = $link['title'];
+						$link_target = $link['target'] ? $link['target'] : '_self';
+					?>
+						<a class="btn-border" data-fancybox href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"> <span></span><?php echo esc_html($link_title); ?></a>
+					<?php endif; ?>
+				</div>
+			</nav>
+			<div class="menu-btn menu-btn-desc">
+				<?php
+				if ($link) :
+					$link_url = $link['url'];
+					$link_title = $link['title'];
+					$link_target = $link['target'] ? $link['target'] : '_self';
+				?>
+					<a class="btn-border" data-fancybox href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"> <span></span><?php echo esc_html($link_title); ?></a>
+				<?php endif; ?>
+			</div>
 		</div>
 	</header>

@@ -1,0 +1,153 @@
+@import '../inc/vars';
+
+.page-template-projects {
+    main {
+        margin-top: 0;
+    }
+    .header {
+        background: rgb(33, 33, 33);
+    }
+}
+
+.services-block {
+    padding: clamp(rem(40), vw(80), rem(80)) 0;
+    h1 {
+        margin-bottom: clamp(rem(16), vw(40), rem(40));
+        font-size: clamp(rem(32), vw(60), rem(60));
+        color: rgb(62, 39, 35);
+        font-family: 'Geologica';
+        text-transform: uppercase;
+    }
+    &__box {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: rem(40) rem(80);
+        @include desktop-md {
+            gap: rem(40);
+        }
+        @include tablet-smm {
+            grid-template-columns: 1fr 1fr;
+        }
+        @include tablet-sm {
+            grid-template-columns: 1fr;
+            gap: rem(24);
+        }
+    }
+    &__item {
+        cursor: pointer;
+        transition: all 0.3s;
+        &:hover {
+            img {
+                filter: brightness(0.7);
+            }
+        }
+        &-img {
+            position: relative;
+            margin-bottom: clamp(rem(8), vw(24), rem(24));
+            @keyframes pulsate {
+                0% {
+                    border: 2px solid rgb(19, 51, 46);
+                }
+                50% {
+                    border: 2px solid rgba(19, 51, 46, 0.0191);
+                }
+            }
+
+            img {
+                width: 100%;
+                height: rem(600);
+                object-fit: cover;
+                transition: all 0.3s;
+
+                @include desktop-md {
+                    height: rem(500);
+                }
+
+                @include tablet-md {
+                    height: rem(460);
+                }
+                @include tablet-sm {
+                    height: rem(388);
+                }
+            }
+            &-status {
+                padding: rem(3);
+                position: absolute;
+                border-radius: rem(40);
+                top: rem(16);
+                right: rem(16);
+                .status {
+                    font-size: clamp(rem(16), vw(24), rem(24));
+                    font-weight: 200;
+
+                    padding: rem(7) rem(24);
+                    border-radius: rem(40);
+                }
+                &.coming {
+                    border: 2px solid rgb(215, 204, 200);
+
+                    .status {
+                        color: rgb(62, 39, 35);
+                        background: rgb(215, 204, 200);
+                    }
+                }
+                &.completed {
+                    border: 2px solid rgb(204, 149, 106);
+
+                    .status {
+                        color: rgb(62, 39, 35);
+                        background: linear-gradient(
+                            141.87deg,
+                            rgb(204, 149, 106) 18.349%,
+                            rgb(249, 231, 216) 35.979%,
+                            rgb(248, 204, 165) 46.477%,
+                            rgb(204, 149, 106) 58.559%,
+                            rgb(104, 67, 44) 81.421%
+                        );
+                    }
+                }
+                &.progress {
+                    border: 2px solid rgb(19, 51, 46);
+                    animation: pulsate 2s infinite;
+                    .status {
+                        color: rgb(215, 204, 200);
+                        background: rgb(19, 51, 46);
+                    }
+                }
+            }
+        }
+        h3 {
+            color: rgb(62, 39, 35);
+            font-size: clamp(rem(16), vw(24), rem(24));
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: rem(8);
+            max-width: 85%;
+        }
+
+        &-caption {
+            color: rgb(62, 39, 35);
+            font-size: clamp(rem(16), vw(24), rem(24));
+            font-weight: 200;
+            max-width: 85%;
+        }
+        &-bottom {
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                background-image: url(' ./../../images/arrow.png');
+                width: 100%;
+                height: 100%;
+                width: 48px;
+                height: 48px;
+                background-size: cover;
+                transition: all 0.3s;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}
+

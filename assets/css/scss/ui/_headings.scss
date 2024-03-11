@@ -1,17 +1,17 @@
-
-
 h2 {
-font-family: 'e-Ukraine Head';
-font-size: clamp(rem(24), vw(40), rem(40));
-font-weight: 400;
-text-transform: uppercase;
-margin-bottom: rem(8);
+    /* H2 lower mob */
+    color: rgb(62, 39, 35);
+    font-family: 'Geologica';
+    font-size: clamp(rem(24), vw(40), rem(40));
+    font-weight: 400;
+    line-height: 1.25;
+		text-transform: uppercase;
 }
-desc{
-font-family: 'e-Ukraine Head';
-font-size: clamp(rem(12), vw(16), rem(16));
-font-weight: 200;
-
+.desc {
+    color: rgb(62, 39, 35);
+    font-family: 'Geologica';
+    font-size: clamp(rem(16), vw(20), rem(20));
+    font-weight: 200;
+    line-height: 1.25;
 }
-
 

@@ -7,60 +7,73 @@ html {
 
 body {
     font-size: $bodyfontsize;
-    font-family: 'e-Ukraine Head';
+    font-family: 'Geologica';
     line-height: 1.25;
     font-weight: 200;
     color: rgb(23, 22, 20);
 }
 main {
-    min-height: 86vh;
+    // min-height: 66vh;
     display: flex;
     flex-direction: column;
+    background: rgb(215, 204, 200);
+    margin-top: rem(-100);
 }
 p {
-    font-family: ' e-Ukraine Head';
+    font-family: 'Geologica';
     margin-bottom: rem(12);
     font-weight: 200;
 }
 
 .contact-block__form {
-    background: rgb(196, 156, 77);
-    padding: rem(40) rem(48);
-    @include tablet-smm {
-        padding: rem(20);
+    h2 {
+        color: rgb(215, 204, 200);
+        font-size: clamp(rem(16), vw(24), rem(24));
+        font-weight: 400;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: clamp(rem(8), vw(16), rem(16));
     }
-}
-
-h3.form-title {
-    color: rgb(255, 255, 255);
-    font-size: clamp(rem(16), vw(24), rem(24));
-    font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: clamp(rem(16), vw(24), rem(24));
-    text-align: 0;
 }
 
 .form-box {
     display: flex;
     flex-direction: column;
-    gap: rem(3);
-    margin-bottom: clamp(rem(16), vw(24), rem(24));
+    gap: rem(8);
+    margin-bottom: clamp(rem(8), vw(16), rem(16));
+    p {
+        margin-bottom: 0;
+    }
     input,
     textarea {
-        background: transparent;
+        color: rgb(78, 75, 74);
+        font-family: 'Geologica';
+        font-size: clamp(rem(14), vw(16), rem(16));
+        font-weight: 200;
+        text-align: left;
+        border-radius: rem(8);
+        padding: rem(14) clamp(rem(16), vw(24), rem(24));
+        background: rgb(44, 43, 43);
         border: none;
-        padding: clamp(rem(12), vw(16), rem(16));
+        border-radius: rem(8);
+        outline: none;
         width: 100%;
-        border-radius: 0;
-        border: 1px solid rgb(225, 205, 164);
-        color: rgb(225, 205, 164);
-        font-family: 'e-Ukraine Head';
         &::placeholder {
-            color: rgb(225, 205, 164);
-            font-size: clamp(rem(12), vw(16), rem(16));
-            font-weight: 200;
+            color: rgb(78, 75, 74);
+            font-family: 'Geologica';
+            font-size: clamp(rem(14), vw(16), rem(16));
         }
     }
+    .box > p {
+        display: flex;
+        gap: rem(8);
+        @include tablet-sm {
+            flex-direction: column;
+        }
+    }
+}
+.wpcf7-response-output {
+    color: #fff !important;
 }
 @include tablet-smm {
     .btn {
@@ -74,9 +87,15 @@ h3.form-title {
 .wpcf7 textarea {
     resize: none;
 }
-.wpcf7.js {
-    margin: auto;
+.page-template-default{
+   main {
+        margin-top: 0;
+    }
+    .header {
+        background: rgb(33, 33, 33);
+    }
 }
+
 .default-template {
     padding: rem(24) 0;
     h1 {
@@ -98,6 +117,11 @@ h3.form-title {
     ul {
         margin-bottom: clamp(rem(6), vw(8), rem(8));
     }
+}
+
+.fancybox-bg {
+    backdrop-filter: blur(24px);
+    background: rgba(215, 204, 200, 0.7) !important;
 }
 @import '_layout';
 @import 'ui/_button';

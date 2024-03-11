@@ -1,0 +1,174 @@
+@import '../inc/vars';
+.hero-block {
+    position: relative;
+
+    padding: clamp(rem(175), vw(288), rem(288)) 0 clamp(rem(64), vw(73), rem(73));
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+
+    h1 {
+        background: linear-gradient(141.87deg, rgb(204, 149, 106), rgb(249, 231, 216), rgb(248, 204, 165), rgb(204, 149, 106), rgb(104, 67, 44));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-family: 'Geologica';
+        font-size: clamp(rem(32), vw(60), rem(60));
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: clamp(rem(8), vw(16), rem(16));
+        display: inline-block;
+    }
+    .desc {
+        color: rgb(215, 204, 200);
+    }
+}
+
+.about-block {
+    padding: clamp(rem(40), vw(80), rem(80)) 0;
+    h2 {
+        margin-bottom: clamp(rem(8), vw(16), rem(16));
+    }
+    &__desc {
+        margin-bottom: clamp(rem(24), vw(40), rem(40));
+        max-width: rem(1090);
+    }
+
+    &__top-img {
+        display: flex;
+        gap: rem(40);
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @include tablet-smm {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-column-gap: rem(24);
+            grid-row-gap: rem(24);
+            &-img:nth-child(1) {
+                grid-area: 1 / 1 / 2 / 2;
+            }
+            &-img:nth-child(2) {
+                grid-area: 1 / 2 / 2 / 3;
+            }
+            &-img:nth-child(3) {
+                grid-area: 2 / 1 / 3 / 3;
+            }
+        }
+    }
+
+    &__box {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        margin: clamp(rem(24), vw(40), rem(40)) 0;
+        gap: rem(40);
+        @include tablet-smm {
+            grid-template-columns: 1fr;
+            gap: rem(24);
+        }
+        h3 {
+            color: rgb(62, 39, 35);
+            font-size: clamp(rem(16), vw(24), rem(24));
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: clamp(rem(8), vw(16), rem(16));
+        }
+        .desc {
+            color: rgb(62, 39, 35);
+            ul {
+                margin-left: rem(25);
+            }
+        }
+    }
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: rem(24);
+    }
+    &__right {
+        display: flex;
+        gap: rem(24);
+        justify-content: end;
+    }
+    &__right-img-full {
+        img {
+            object-fit: cover;
+            width: 100%;
+            @include tablet-sm {
+                height: rem(190);
+            }
+        }
+    }
+}
+
+.portfolio-block {
+    padding: rem(24) 0 clamp(rem(40), vw(80), rem(80));
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(10);
+        margin-bottom: clamp(rem(24), vw(40), rem(40));
+    }
+    .swiper-nav {
+        display: flex;
+        justify-content: end;
+        gap: rem(16);
+        button {
+            border: none;
+
+            transition: all 0.3s;
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+        @include tablet-sm {
+            gap: rem(8);
+        }
+        .btn-arrow {
+            position: relative;
+            width: rem(60);
+            height: rem(60);
+            @include tablet-sm {
+                width: rem(30);
+                height: rem(30);
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                background-image: url(' ./../../images/button-right.png');
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                transition: all 0.3s;
+                left: 0;
+                top: 0;
+            }
+        }
+        .portfolio-swiper-prev {
+            .btn-arrow {
+                &::after {
+                    background-image: url(' ./../../images/button-left.png');
+                }
+            }
+        }
+    }
+    img {
+        height: rem(400);
+        object-fit: cover;
+        @include desktop-md {
+            height: rem(300);
+        }
+        @include tablet-md {
+            height: rem(280);
+        }
+        @include tablet-sm {
+            height: rem(230);
+        }
+    }
+}
+

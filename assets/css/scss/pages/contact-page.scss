@@ -1,6 +1,5 @@
 @import '../inc/vars';
-
-.page-template-success{
+.page-template-contact-page {
     main {
         margin-top: 0;
     }
@@ -9,18 +8,16 @@
     }
 }
 .contact-block {
-    padding: clamp(rem(40), vw(80), rem(80)) 0 ;
+    padding: clamp(rem(40), vw(80), rem(80)) 0;
     .container {
         display: grid;
-        grid-template-columns: 0.7fr 1.3fr;
-        gap: rem(64);
+        grid-template-columns: 1fr 1fr;
         @include tablet-smm {
             grid-template-columns: 1fr;
-            gap: rem(24);
         }
     }
 
-    &__right {
+    &__left {
         background-repeat: no-repeat;
         background-size: cover;
     }
@@ -56,12 +53,18 @@
             font-weight: 200;
         }
     }
-    &__left {
-        background: rgb(33, 33, 33);
-        padding: clamp(rem(24), vw(40), rem(40));
-        display: flex;
-        align-items: center;
-        justify-content: center;
+
+    &__right {
+        iframe {
+            width: 100%;
+            height: 100%;
+            @include tablet-smm {
+                height: rem(350);
+            }
+            @include tablet-sm {
+                height: rem(300);
+            }
+        }
     }
 }
 

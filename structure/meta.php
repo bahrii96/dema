@@ -7,4 +7,4 @@
 <link rel="icon" href="<?php echo $mainpath; ?>/assets/images/favicon/cropped-fab-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="<?php echo $mainpath; ?>/assets/images/favicon/cropped-fab-180x180.png" />
 <link rel="stylesheet" href="<?php echo $mainpath; ?>/assets/fonts/font-awesome/css/all.min.css">
-<link href="https://fonts.googleapis.com/css?family=Mulish:200,300,regular,500,600,700,800,900" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Geologica:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
