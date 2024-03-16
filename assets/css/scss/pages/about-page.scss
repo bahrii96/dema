@@ -125,8 +125,9 @@
 
     h2 {
         margin-left: rem(-260);
-        margin-bottom: clamp(rem(24), vw(40), rem(40));
         text-transform: none;
+				  margin-bottom: clamp(rem(24), vw(40), rem(40));
+					 font-size: clamp(rem(20), vw(40), rem(40));
         @include tablet-smm {
             margin-left: 0;
         }
@@ -135,6 +136,7 @@
     .about-block__title-mob,
     .about-block__desc-mob {
         display: none;
+				
         @include tablet-smm {
             display: block;
             position: relative;
@@ -557,10 +559,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 6%;
-				@include tablet-smm {
-					 grid-template-columns: 1fr;
-					 gap: rem(24);
-				}
+        @include tablet-smm {
+            grid-template-columns: 1fr;
+            gap: rem(24);
+        }
     }
     &__inf {
         display: flex;

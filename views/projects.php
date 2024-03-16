@@ -29,6 +29,7 @@ $project_archive_template = get_field('project_archive_template');
 						$project_template = get_field('project_template', $post->ID);
 						$status = $project_template['status'];
 						$caption = $project_template['caption'];
+						$disable = $project_template['disable'];
 						$status_class = '';
 						$status_name = '';
 						switch ($status) {
@@ -46,33 +47,35 @@ $project_archive_template = get_field('project_archive_template');
 								break;
 						}
 				?>
-						<a href="<?php echo get_the_permalink(); ?>" class="services-block__item">
-							<?php if ($thumbnail_url) : ?>
-								<div class="services-block__item-img">
-									<img src="<?php echo $thumbnail_url; ?>" alt="<?php echo get_the_title($post_id); ?>">
-									<div class="services-block__item-img-status <?php echo $status_class ?>">
-										<div class="status">
-											<?php echo $status_name ?>
-										</div>
+						<?php echo $disable ? '<div class="services-block__item">' : '<a href="' . get_the_permalink() . '" class="services-block__item">'; ?>
+						<?php if ($thumbnail_url) : ?>
+							<div class="services-block__item-img">
+								<img src="<?php echo $thumbnail_url; ?>" alt="<?php echo get_the_title($post_id); ?>">
+								<div class="services-block__item-img-status <?php echo $status_class ?>">
+									<div class="status">
+										<?php echo $status_name ?>
 									</div>
-								</div>
-							<?php else : ?>
-								<div class="services-block__item-img">
-									<img src="/wp-content/uploads/2024/03/woocommerce-placeholder.png" alt="Placeholder Image">
-									<div class="services-block__item-status <?php echo $status_class ?>">
-										<div class="status">
-											<?php echo $status_name ?>
-										</div>
-									</div>
-								</div>
-							<?php endif; ?>
-							<div class="services-block__item-bottom">
-								<h3><?php echo get_the_title($post_id); ?></h3>
-								<div class="services-block__item-caption">
-									<?php echo $caption ?>
 								</div>
 							</div>
-						</a>
+						<?php else : ?>
+							<div class="services-block__item-img">
+								<img src="/wp-content/uploads/2024/03/woocommerce-placeholder.png" alt="Placeholder Image">
+								<div class="services-block__item-status <?php echo $status_class ?>">
+									<div class="status">
+										<?php echo $status_name ?>
+									</div>
+								</div>
+							</div>
+						<?php endif; ?>
+						<div class="services-block__item-bottom">
+							<h3><?php echo get_the_title($post_id); ?></h3>
+							<div class="services-block__item-caption">
+								<?php echo $caption ?>
+							</div>
+						</div>
+						<?php
+						echo $disable ? '</div >' : '	</a>';
+						?>
 				<?php
 					endwhile;
 					wp_reset_query();

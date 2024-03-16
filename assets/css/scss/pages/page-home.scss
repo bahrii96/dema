@@ -134,6 +134,7 @@
     h2 {
         margin-left: rem(-260);
         margin-bottom: clamp(rem(24), vw(40), rem(40));
+        font-size: clamp(rem(20), vw(40), rem(40));
         text-transform: none;
         @include tablet-smm {
             margin-left: 0;

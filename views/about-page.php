@@ -118,6 +118,20 @@ if ($about_template) {
 										$year = $item['year'];
 										$caption = $item['caption'];
 										$description = $item['description'];
+		$current_lang = pll_current_language();
+$next="";
+$prew="";
+								switch ($current_lang) {
+									case 'en':
+									$next="next";
+                                    $prew="prew";
+			
+										break;
+									case 'uk':
+										$next="вперед";
+                                    $prew="назад";
+										break;
+								}
 									?>
 										<div class="swiper-slide history-block__slide">
 											<div class="history-block__right">
@@ -139,10 +153,10 @@ if ($about_template) {
 						<div class="swiper-nav">
 							<button type="button" class="history-swiper-prev button-box">
 								<div class="btn-arrow left"> </div>
-								<span class="dtn-text">назад</span>
+								<span class="dtn-text"><?php echo $prew ?></span>
 							</button>
 							<button type="button" class="history-swiper-next button-box">
-								<span class="dtn-text">вперед</span>
+								<span class="dtn-text"><?php echo $next ?></span>
 								<div class="btn-arrow"> </div>
 							</button>
 						</div>
