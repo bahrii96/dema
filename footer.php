@@ -122,7 +122,7 @@ if ($footer_settings) {
 									$icon_hover = $item['icon_hover'];
 									$link = $item['link'];
 								?>
-									<a class=" <?php echo $link  ?>" href="<?php echo esc_url($link_url); ?>">
+									<a href="<?php echo $link ?>">
 										<div class="footer__social-def"><?php echo wp_get_attachment_image($icon, 'full'); ?></div>
 										<div class="footer__social-hov"> <?php echo wp_get_attachment_image($icon_hover, 'full'); ?></div>
 									</a>
